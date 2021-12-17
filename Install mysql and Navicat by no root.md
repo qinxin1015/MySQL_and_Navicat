@@ -35,7 +35,7 @@ tar -xvf mysql-5.7.25-1.el6.x86_64.rpm-bundle.tar
 
 会得到以下9个安装包：
 
-![rpm_pkg](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\rpm_pkg.png)
+![rpm_pkg](fig/rpm_pkg.png)
 
 我们需要安装的只有5个（也有人说，只需要安装client 和 server即可，感兴趣的可以试一下）
 
@@ -62,7 +62,7 @@ ll
 # 会发现已经多了3个文件夹 var/ usr/ etc
 ```
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\folder_after_install.png)
+![](fig/folder_after_install.png)
 
 ```shell
 # 创建配置需要的其他文件夹
@@ -131,8 +131,6 @@ log-bin-trust-function-creators=1
 
 ```
 
-
-
 #### 1.5 初始化mysql数据库
 
 ```shell
@@ -150,7 +148,7 @@ cd ~/app/mysql/usr/sbin
 netstat -nl | grep 3336   # 本人设的端口号是3336，其他人可自行修改
 ```
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\netstat_port.png)
+![](fig/netstat_port.png)
 
 
 
@@ -171,11 +169,11 @@ cd ~/app/mysql/usr/bin
 ./mysql -u root -p -S ~/app/mysql/var/lib/mysql/mysql.sock 
 ```
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\login_mysql_1st.png)
+![](fig/login_mysql_1st.png)
 
 - 在这里，初始密码是上面查到的 -- **9PIHmmj0pc.5**
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\login_success.png)
+![](fig/login_success.png)
 
 #### 1.9 修改root 账号的密码
 
@@ -189,7 +187,7 @@ Query OK, 0 rows affected (0.01 sec)
 ```
 - 下次登录的密码就成了 **psnb**
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\login_mysql.png)
+![](fig/login_mysql.png)
 
 #### 1.10 开通访问权限
 `grant all privileges on *.* to 'root'@'%' identified by 'psnb';`
@@ -229,7 +227,7 @@ Enter password:
 
 #### 2.1 Navicat 远程连接mysql
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\navicat_main.png)
+![](fig/navicat_main.png)
 
 
 
@@ -243,13 +241,13 @@ Enter password:
 
   
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\navicat_connect.png)
+![](fig/navicat_connect.png)
 
 
 
 
 
-![](D:\00 PERSONAL-LEARNING\Install_MySQL_and_Navicate\fig\navicat_connect_sucess.png)
+![](fig/navicat_connect_sucess.png)
 
 - 连接测试成功后，点“确定”，保存即可，下次登录Navicat 双击这个连接，既可以登录远程的mysql
 
