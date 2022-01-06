@@ -70,8 +70,6 @@ mkdir ~/app/mysql/var/log
 mkdir ~/app/mysql/var/lib/data
 ```
 
-
-
 #### 1.4 **修改配置文件my.cnf**
 
 ```shell
@@ -128,7 +126,6 @@ lower_case_table_names=1
 
 sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 log-bin-trust-function-creators=1
-
 ```
 
 #### 1.5 初始化mysql数据库
@@ -246,10 +243,36 @@ Enter password:
 
 
 
-
 ![](fig/navicat_connect_sucess.png)
 
 - 连接测试成功后，点“确定”，保存即可，下次登录Navicat 双击这个连接，既可以登录远程的mysql
+
+
+
+# 添加新用户 - 2022.1.6
+
+
+1. root用户登录数据库
+```
+grant all privileges on crc.* to 'Rd2crc'@'localhost' identified by 'crc'  with grant option;
+grant all privileges on crc.* to 'Rd2crc'@'%' identified by 'crc'  with grant option;
+flush privileges;
+```
+
+2. 删除用户
+```
+drop user 'r&d2crc'@'%';
+drop user 'r&d2crc'@'localhost';
+flush privileges;
+
+drop user 'rd2crc'@'%';
+drop user 'rd2crc'@'localhost';
+flush privileges;
+```
+
+3. Navicate 客户端 给 `rd2crc`用户赋予`super`权限
+![](fig/给新账户赋予super权限.png)
+
 
 ## 3. Reference
 
@@ -257,3 +280,4 @@ Enter password:
 
 2.非root用户安装mysql: https://blog.csdn.net/weixin_37998428/article/details/111937822
 
+3.mysql 中创建新的用户后成功登录后，使用mysql时出现 ERROR 1184 (08S01): 解决方案： https://zhuanlan.zhihu.com/p/30277196
